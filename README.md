@@ -2,6 +2,8 @@
 
 Group members:
 
-Ada Lovelace adalovelace@csu.fullerton.edu
+Jeffrey Guerra jeffreyguerra@csu.fullerton.edu
 
-Charles Babbage charlesbab@csu.fullerton.edu
+James Mabe jamespmabe@csu.fullerton.edu
+
+Mark Bakhit mbakhit@csu.fullerton.edu
