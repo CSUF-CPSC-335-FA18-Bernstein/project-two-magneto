@@ -23,8 +23,17 @@ using namespace std;
 // Randomize the order of all items in the list
 //-----------------------------------------------------------------------------
 void randomize_list(string_vector & strings) {
-  // TODO: implement this function, then delete this comment
-  return;
+	// Initialize pseudo random generator with seed.
+	unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+	srand(seed);
+
+	// Swap stuff.
+	for (int i = 0; i < strings.size(); i++) {
+		int num = rand();
+		num = num % strings.size();
+		swap(strings[i], strings[num]);
+	}
+	return;
 }
 
 //-----------------------------------------------------------------------------
