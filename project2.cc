@@ -29,8 +29,25 @@ void randomize_list(string_vector & strings) {
 
 //-----------------------------------------------------------------------------
 void merge(string_vector & strings, size_t start, size_t mid, size_t end) {
-  // TODO: implement this function, then delete this comment
-  return;
+	size_t right = mid + 1;
+	// Base case, check to skip the merge.
+	if (strings[mid] <= strings[right]) {
+		return;
+	}
+	while (start <= mid && right <= end) {  
+		// Check if in-place, move vector segment.
+		if (strings[start] <= strings[right]) {
+			start++;
+		}
+		// Check if not in-place, rotate, move vector segment.
+		if (strings[start] > strings[right]) {
+			// Moves the lesser value, strings[right] to the front of the vector segment.
+			rotate(strings.begin()+start, strings.begin()+right, strings.begin()+right+1);
+			start++;
+			mid++;
+			right++;
+		}
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -40,8 +57,13 @@ void merge(string_vector & strings, size_t start, size_t mid, size_t end) {
 // the two parts together using the merge() method.
 //-----------------------------------------------------------------------------
 void mergesort(string_vector & strings, size_t start, size_t end) {
-  // TODO: implement this function, then delete this comment
-  return;
+	if (start < end) {
+		size_t mid = (start+end) / 2;
+		mergesort(strings, start, mid);
+		mergesort(strings, mid + 1, end);
+		merge(strings, start, mid, end);
+	}
+	return;
 }
 
 //-----------------------------------------------------------------------------
