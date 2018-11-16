@@ -68,7 +68,7 @@ void merge(string_vector & strings, size_t start, size_t mid, size_t end) {
 //-----------------------------------------------------------------------------
 void mergesort(string_vector & strings, size_t start, size_t end) {
 	if (start < end) {
-		size_t mid = (start+end) / 2;
+		size_t mid = start + (end - start) / 2;
 		mergesort(strings, start, mid);
 		mergesort(strings, mid + 1, end);
 		merge(strings, start, mid, end);
@@ -83,8 +83,23 @@ void mergesort(string_vector & strings, size_t start, size_t end) {
 // It returns the index of the final position of the pivot value.
 //-----------------------------------------------------------------------------
 int hoare_partition(string_vector & strings, int start, int end) {
-  // TODO: implement this function, then delete this comment
-  return 0;
+	string pivot = strings[start];
+	while (true) {
+		// Finds element greater than or equal to pivot.
+		while (strings[start] < pivot) {
+			start++;
+		}
+		// Finds element less than or equal to pivot.
+		while (strings[end] > pivot) {
+			end--;
+		}
+		// Points met so return end.
+		if (start >= end) {
+			return end;
+		}
+		swap(strings[start], strings[end]);
+	}
+	return 0;
 }
 
 //-----------------------------------------------------------------------------
@@ -94,8 +109,12 @@ int hoare_partition(string_vector & strings, int start, int end) {
 // the two parts together using the merge() method.
 //-----------------------------------------------------------------------------
 void quicksort(string_vector & strings, int start, int end) {
-  // TODO: implement this function, then delete this comment
-  return;
+	if (start < end) {
+		int pivot = hoare_partition(strings, start, end);
+		quicksort(strings, start, pivot);
+		quicksort(strings, pivot + 1, end);
+	}
+	return;
 }
 
 
