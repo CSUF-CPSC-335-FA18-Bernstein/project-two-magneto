@@ -55,7 +55,7 @@ int main() {
 	  Timer timer;
 	  mergesort(n_words);
 	  double elapsed = timer.elapsed();
-	   cout << "Quicksort #" << i << "\t" << elapsed << endl;
+	   cout << "Mergesort #" << i << "\t" << elapsed << endl;
 	  mergesort_file << elapsed << endl;
 }
     mergesort_file.close();
